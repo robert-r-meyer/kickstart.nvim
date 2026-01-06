@@ -180,7 +180,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- File operations
-vim.keymap.set('n', '<leader>fr', '<cmd>edit<CR>', { desc = '[F]ile [R]eload' })
+vim.keymap.set('n', '<leader>r', '<cmd>edit<CR>', { desc = '[R]eload file' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
