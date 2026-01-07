@@ -798,7 +798,12 @@ require('lazy').setup({
 
         -- Others
         'html',
+
+        -- Django HTML Template files
         'djlint',
+
+        -- markdown
+        'markdownlint',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
