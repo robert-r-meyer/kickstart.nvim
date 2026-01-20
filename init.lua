@@ -153,7 +153,7 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '~', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -181,6 +181,20 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- File operations
 vim.keymap.set('n', '<leader>r', '<cmd>edit<CR>', { desc = '[R]eload file' })
+
+-- Horizontally split and open file under cursor in NeoTree
+vim.keymap.set('n', '<leader>vs', function()
+  vim.cmd 'split'
+  -- If in NeoTree, trigger the open action; otherwise it will just split
+  vim.cmd 'call feedkeys("\\<CR>", "m")'
+end, { desc = '[V]iew Horizontal [S]plit and open file' })
+
+-- Vertically split and open file under cursor in NeoTree
+vim.keymap.set('n', '<leader>vv', function()
+  vim.cmd 'vsplit'
+  -- If in NeoTree, trigger the open action; otherwise it will just split
+  vim.cmd 'call feedkeys("\\<CR>", "m")'
+end, { desc = '[V]iew [V]ertical split and open file' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -288,6 +302,16 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+
+  -- NOTE This a remove and highlight whitespace section
+  {
+    'cappyzawa/trim.nvim',
+    config = function()
+      require('trim').setup {
+        highlight = false,
+      }
+    end,
   },
 
   -- NOTE This is the Jump Plugin section
